@@ -1,0 +1,20 @@
+{
+  "name": "lws-redirect",
+  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "version": "0.0.0",
+  "description": "lws-redirect",
+  "repository": "https://github.com/75lb/lws-redirect",
+  "keywords": [],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "test-runner test.js"
+  },
+  "devDependencies": {
+    "lws": "^2.0.0",
+    "node-fetch": "^2.6.0",
+    "test-runner": "^0.6.0"
+  }
+}
