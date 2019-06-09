@@ -3,8 +3,12 @@
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "0.0.0",
   "description": "lws-redirect",
-  "repository": "https://github.com/75lb/lws-redirect",
-  "keywords": [],
+  "repository": "https://github.com/lwsjs/lws-redirect",
+  "keywords": [
+    "lws",
+    "lws-middleware",
+    "redirect"
+  ],
   "license": "MIT",
   "engines": {
     "node": ">=8"

@@ -2,7 +2,16 @@ const EventEmitter = require('events')
 
 class Redirect extends EventEmitter {
   description () {
-    return 'Create a redirect rule.'
+    return 'Perform a 302 Redirect if the request URL matches a regular expression.'
+  }
+
+  optionDefinitions () {
+    return [
+      {
+        name: 'redirect',
+        description: "A list of URL redirect rules. For each rule, separate the 'from' and 'to' expressions with '->'. Whitespace surrounding the expressions is ignored. E.g. 'http -> https'."
+      }
+    ]
   }
 
   middleware (config) {
