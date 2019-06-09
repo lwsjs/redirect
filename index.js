@@ -2,7 +2,7 @@ const EventEmitter = require('events')
 
 class Redirect extends EventEmitter {
   description () {
-    return 'Perform a 302 Redirect if the request URL matches a regular expression.'
+    return 'Perform a 302 Redirect if the request URL matches a specified regular expression.'
   }
 
   optionDefinitions () {

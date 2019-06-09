@@ -6,7 +6,7 @@
 
 # lws-redirect
 
-A [lws](https://github.com/lwsjs/lws) middleware plugin to perform a HTTP 302 Redirect if a specified rule is met.
+A [lws](https://github.com/lwsjs/lws) middleware plugin to perform a 302 Redirect if the request URL matches a specified regular expression.
 
 Adds the following option to lws.
 
