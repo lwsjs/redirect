@@ -17,6 +17,23 @@ Adds the following option to lws.
               E.g. 'http -> https'.
 ```
 
+## Usage
+
+```
+$ npm install --save-dev lws-redirect
+
+$ lws --port 80 --stack lws-redirect --redirect 'http -> https'
+Listening on http://mba4.local:80, http://127.0.0.1:80, http://192.168.0.200:80
+
+$ $ curl -I http://127.0.0.1/
+HTTP/1.1 302 Found
+Location: https://127.0.0.1/
+Content-Type: text/html; charset=utf-8
+Content-Length: 67
+Date: Sun, 09 Jun 2019 16:53:38 GMT
+Connection: keep-alive
+```
+
 * * *
 
 &copy; 2019 Lloyd Brookes \<75pound@gmail.com\>.
