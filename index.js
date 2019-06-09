@@ -9,6 +9,8 @@ class Redirect extends EventEmitter {
     return [
       {
         name: 'redirect',
+        multiple: true,
+        typeLabel: '{underline expression} {underline ...}',
         description: "A list of URL redirect rules. For each rule, separate the 'from' and 'to' expressions with '->'. Whitespace surrounding the expressions is ignored. E.g. 'http -> https'."
       }
     ]

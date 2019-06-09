@@ -11,12 +11,19 @@ A [lws](https://github.com/lwsjs/lws) middleware plugin to perform a HTTP 302 Re
 Adds the following option to lws.
 
 ```
---redirect    A list of URL redirect rules. For each rule, separate the 'from' and 'to'
-              expressions with '->'. Whitespace surrounding the expressions is ignored.
-              E.g. 'http -> https'.
+--redirect expression ...   A list of URL redirect rules. For each rule, separate the 'from' and 'to'
+                            expressions with '->'. Whitespace surrounding the expressions is ignored.
+                            E.g. 'http -> https'.
 ```
 
 ## Usage
+
+Supply a "from" regular expression and "to" replace string. If the request URL matches the "from" regexp, the matching "from" string will be replaced by the "to" string.
+
+Some examples if the incoming request URL is `http://localhost`:
+
+* `--redirect 'http -> https'` would redirect to `https://localhost`.
+* `--redirect 'http -> https' 'localhost -> remotehost'` would redirect to `https://remotehost`.
 
 ```
 $ npm install --save-dev lws-redirect
