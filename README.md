@@ -2,7 +2,6 @@
 [![npm module downloads](https://img.shields.io/npm/dt/lws-redirect.svg)](https://www.npmjs.org/package/lws-redirect)
 [![Build Status](https://travis-ci.org/lwsjs/redirect.svg?branch=master)](https://travis-ci.org/lwsjs/redirect)
 [![Dependency Status](https://badgen.net/david/dep/lwsjs/redirect)](https://david-dm.org/lwsjs/redirect)
-[![Coverage Status](https://coveralls.io/repos/github/lwsjs/redirect/badge.svg)](https://coveralls.io/github/lwsjs/redirect)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # lws-redirect
