@@ -3,7 +3,7 @@
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "1.0.2",
   "description": "Perform a 302 Redirect if the request URL matches a specified regular expression",
-  "repository": "https://github.com/lwsjs/lws-redirect",
+  "repository": "https://github.com/lwsjs/redirect",
   "keywords": [
     "lws",
     "lws-middleware",
@@ -17,7 +17,7 @@
     "test": "test-runner test.js"
   },
   "devDependencies": {
-    "lws": "^2.0.0",
+    "lws": "^2.0.1",
     "node-fetch": "^2.6.0",
     "test-runner": "^0.6.0"
   },
