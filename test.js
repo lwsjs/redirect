@@ -47,3 +47,35 @@ tom.test('schema and port', async function () {
   a.strictEqual(response.status, 302)
   a.strictEqual(response.headers.get('location'), 'https://localhost:9000/one')
 })
+
+tom.test('no redirect match', async function () {
+  const port = 8000 + this.index
+  const lws = Lws.create({
+    stack: Redirect,
+    port,
+    redirect: 'something -> anotherthing'
+  })
+  const response = await fetch(`http://localhost:${port}/one`, { redirect: 'manual' })
+  lws.server.close()
+  a.strictEqual(response.status, 404)
+})
+
+tom.test('no redirect match, next middleware invoked', async function () {
+  const port = 8000 + this.index
+  class One {
+    middleware () {
+      return async (ctx, next) => {
+        ctx.response.status = 405
+        await next()
+      }
+    }
+  }
+  const lws = Lws.create({
+    stack: [ Redirect, One ],
+    port,
+    redirect: 'something -> anotherthing'
+  })
+  const response = await fetch(`http://localhost:${port}/one`, { redirect: 'manual' })
+  lws.server.close()
+  a.strictEqual(response.status, 405)
+})

@@ -20,15 +20,17 @@ class Redirect extends EventEmitter {
     const redirects = parseRedirectRules(config.redirect)
     if (redirects.length) {
       this.emit('verbose', 'middleware.redirect.config', { redirects })
-      return function (ctx, next) {
+      return async function (ctx, next) {
         let redirectToUrl = ctx.request.href
         for (const rule of redirects) {
           if (rule.from.test(redirectToUrl)) {
             redirectToUrl = redirectToUrl.replace(rule.from, rule.to)
           }
         }
-        ctx.redirect(redirectToUrl)
-        next()
+        if (redirectToUrl !== ctx.request.href) {
+          ctx.redirect(redirectToUrl)
+        }
+        await next()
       }
     }
   }
