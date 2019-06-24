@@ -1,7 +1,7 @@
 {
   "name": "lws-redirect",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Perform a 302 Redirect if the request URL matches a specified regular expression",
   "repository": "https://github.com/lwsjs/redirect",
   "keywords": [
