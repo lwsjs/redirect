@@ -1,10 +1,10 @@
 const Tom = require('test-runner').Tom
 const Redirect = require('./')
 const Lws = require('lws')
-const a = require('assert')
+const a = require('assert').strict
 const fetch = require('node-fetch')
 
-const tom = module.exports = new Tom('redirect')
+const tom = module.exports = new Tom()
 
 tom.test('http -> https', async function () {
   const port = 8000 + this.index
@@ -15,8 +15,8 @@ tom.test('http -> https', async function () {
   })
   const response = await fetch(`http://localhost:${port}/one`, { redirect: 'manual' })
   lws.server.close()
-  a.strictEqual(response.status, 302)
-  a.strictEqual(response.headers.get('location'), 'https://localhost:8001/one')
+  a.equal(response.status, 302)
+  a.equal(response.headers.get('location'), 'https://localhost:8001/one')
 })
 
 tom.test('port', async function () {
@@ -28,8 +28,8 @@ tom.test('port', async function () {
   })
   const response = await fetch(`http://localhost:${port}/one`, { redirect: 'manual' })
   lws.server.close()
-  a.strictEqual(response.status, 302)
-  a.strictEqual(response.headers.get('location'), 'http://localhost:9000/one')
+  a.equal(response.status, 302)
+  a.equal(response.headers.get('location'), 'http://localhost:9000/one')
 })
 
 tom.test('schema and port', async function () {
@@ -44,8 +44,8 @@ tom.test('schema and port', async function () {
   })
   const response = await fetch(`http://localhost:${port}/one`, { redirect: 'manual' })
   lws.server.close()
-  a.strictEqual(response.status, 302)
-  a.strictEqual(response.headers.get('location'), 'https://localhost:9000/one')
+  a.equal(response.status, 302)
+  a.equal(response.headers.get('location'), 'https://localhost:9000/one')
 })
 
 tom.test('no redirect match', async function () {
@@ -57,7 +57,7 @@ tom.test('no redirect match', async function () {
   })
   const response = await fetch(`http://localhost:${port}/one`, { redirect: 'manual' })
   lws.server.close()
-  a.strictEqual(response.status, 404)
+  a.equal(response.status, 404)
 })
 
 tom.test('no redirect match, next middleware invoked', async function () {
@@ -77,5 +77,5 @@ tom.test('no redirect match, next middleware invoked', async function () {
   })
   const response = await fetch(`http://localhost:${port}/one`, { redirect: 'manual' })
   lws.server.close()
-  a.strictEqual(response.status, 405)
+  a.equal(response.status, 405)
 })
