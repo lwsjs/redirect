@@ -40,6 +40,32 @@ Date: Sun, 09 Jun 2019 16:53:38 GMT
 Connection: keep-alive
 ```
 
+## Debugging
+
+This package includes a trivial command-line tool for testing redirect rules. Test each rule individually using this command structure:
+
+```
+$ npx lws-redirect <from> <to> <url>
+```
+
+The following examples test a rule which adds a trailing `/` to a path ending with `one` or `two`. The first two examples produce a match and modified target URL. The third and fourth examples do not produce a match so the target URL remains unmodified.
+
+_Note: Windows users may need to use double instead of single quotes._
+
+```
+$ npx lws-redirect '(one|two$)' '$1/' http://something.com/one
+http://something.com/one/
+
+$ npx lws-redirect '(one|two$)' '$1/' http://something.com/two
+http://something.com/two/
+
+$ npx lws-redirect '(one|two$)' '$1/' http://something.com/three
+http://something.com/three
+
+$ npx lws-redirect '(one|two)$' '$1/' http://something.com/one/four
+http://something.com/one/four
+```
+
 ## Tutorials
 
 * [How to redirect all HTTP traffic to HTTPS](https://github.com/lwsjs/local-web-server/wiki/How-to-redirect-HTTP-traffic-to-HTTPS).

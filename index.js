@@ -1,4 +1,5 @@
 const EventEmitter = require('events')
+const getTargetUrl = require('./lib/rewrite').getTargetUrl
 
 class Redirect extends EventEmitter {
   description () {
@@ -23,9 +24,7 @@ class Redirect extends EventEmitter {
       return async (ctx, next) => {
         let redirectToUrl = ctx.request.href
         for (const rule of redirects) {
-          if (rule.from.test(redirectToUrl)) {
-            redirectToUrl = redirectToUrl.replace(rule.from, rule.to)
-          }
+          redirectToUrl = getTargetUrl(rule.from, rule.to, redirectToUrl)
         }
         if (redirectToUrl !== ctx.request.href) {
           this.emit('verbose', 'middleware.redirect.redirecting', {
@@ -48,7 +47,7 @@ function parseRedirectRules (rules) {
       const matches = rule.match(/(\S*)\s*->\s*(\S*)/)
       if (!(matches && matches.length >= 3)) throw new Error('Invalid rule: ' + rule)
       return {
-        from: new RegExp(matches[1]),
+        from: matches[1],
         to: matches[2]
       }
     } else {
