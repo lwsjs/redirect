@@ -23,7 +23,9 @@
     "test-runner": "^0.8.13"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "lib/*.js",
+    "bin/*.js"
   ],
   "dependencies": {
     "array-back": "^4.0.1"
