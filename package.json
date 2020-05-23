@@ -17,7 +17,7 @@
     "test": "test-runner test.js"
   },
   "devDependencies": {
-    "lws": "^2.0.8",
+    "lws": "^3.1.0",
     "node-fetch": "^2.6.0",
     "test-runner": "^0.8.13"
   },
